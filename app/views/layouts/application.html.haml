@@ -6,18 +6,33 @@
   = javascript_include_tag :defaults
   = csrf_meta_tag
 
-%body.container_16
-  Reveal in:
-  = @poll_reveal_hours
-  Hours,
-  = @poll_reveal_minutes 
-  Minutes,
-  = @poll_reveal_seconds
-  Seconds.
-  %h1 Mob Polls
+%body
+  #login-wrapper
+    - if user_signed_in?
+      Signed in as
+      = current_user.username
+      = link_to("logout", destroy_user_session_path)
+    - else
+      - form_for("user", :url => user_session_path) do |f|
+        = f.text_field :login
+        %br/
+        = f.password_field :password
+        %br/
+        = f.submit 'Sign in'
+      = link_to("Register", new_user_registration_path)
 
-  = notice
-  = alert
+  #content-wrapper.container_16
+    Reveal in:
+    = @poll_reveal_hours
+    Hours,
+    = @poll_reveal_minutes 
+    Minutes,
+    = @poll_reveal_seconds
+    Seconds.
+    %h1 Mob Polls
 
-  = yield
+    = notice
+    = alert
+
+    = yield
 

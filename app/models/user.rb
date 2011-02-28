@@ -7,7 +7,8 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :email, :username
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :username
+  attr_accessor :login
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :username, :login
 
   has_many :questions
 
