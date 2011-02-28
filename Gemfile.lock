@@ -1,6 +1,7 @@
 GEM
   remote: http://rubygems.org/
   specs:
+    aaronh-chronic (0.3.9)
     abstract (1.0.0)
     actionmailer (3.0.4)
       actionpack (= 3.0.4)
@@ -71,6 +72,9 @@ GEM
     tzinfo (0.3.24)
     warden (1.0.3)
       rack (>= 1.0.0)
+    whenever (0.6.2)
+      aaronh-chronic (>= 0.3.9)
+      activesupport (>= 2.3.4)
 
 PLATFORMS
   ruby
@@ -80,3 +84,4 @@ DEPENDENCIES
   haml
   mysql2
   rails (= 3.0.4)
+  whenever

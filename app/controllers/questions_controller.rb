@@ -1,4 +1,7 @@
 class QuestionsController < ApplicationController
+  before_filter :get_countdown
+  before_filter :get_new_question
+
   # GET /questions
   # GET /questions.xml
   def index
@@ -24,7 +27,7 @@ class QuestionsController < ApplicationController
   # GET /questions/new
   # GET /questions/new.xml
   def new
-    @question = Question.new
+    @new_question = Question.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -79,5 +82,11 @@ class QuestionsController < ApplicationController
       format.html { redirect_to(questions_url) }
       format.xml  { head :ok }
     end
+  end
+
+  protected
+
+  def get_new_question
+    @question = Question.new :question => "Ask the Mob a question!"
   end
 end

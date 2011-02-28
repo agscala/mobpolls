@@ -1,6 +1,9 @@
 class CreateQuestions < ActiveRecord::Migration
   def self.up
     create_table :questions do |t|
+      t.references :user
+      t.string :question
+      t.datetime :expiration
 
       t.timestamps
     end
