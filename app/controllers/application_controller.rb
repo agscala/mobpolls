@@ -1,7 +1,8 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
+  before_filter :get_countdown
 
-  protected 
+  protected
     def get_countdown
       now = Time.now
       if now.hour < 12

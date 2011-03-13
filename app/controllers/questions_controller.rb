@@ -1,6 +1,6 @@
 class QuestionsController < ApplicationController
-  before_filter :get_countdown
   before_filter :get_new_question
+  before_filter :authenticate_user!, :only => [:create]
 
   # GET /questions
   # GET /questions.xml
@@ -44,6 +44,7 @@ class QuestionsController < ApplicationController
   # POST /questions.xml
   def create
     @question = Question.new(params[:question])
+    @question.author = current_user
 
     respond_to do |format|
       if @question.save
@@ -87,6 +88,9 @@ class QuestionsController < ApplicationController
   protected
 
   def get_new_question
-    @question = Question.new :question => "Ask the Mob a question!"
+    @question = Question.new :text => "Ask the Mob a question!"
+    6.times do
+      @question.responses.build :text => "HEY"
+    end
   end
 end

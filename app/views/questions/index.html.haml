@@ -2,11 +2,11 @@
 
 - @questions.each do |question|
   .question-wrapper
-    %p.question-text= question.question
+    %p.question-text
+      = question.text
     %p.question-submitter
       Asked by
-      -# - if question.user
-        -# = question.user.username
+      = question.author.username
       -# <td><%= link_to 'Show', question %></td>
       -# <td><%= link_to 'Edit', edit_question_path(question) %></td>
       -# <td><%= link_to 'Destroy', question, :confirm => 'Are you sure?', :method => :delete %></td>
